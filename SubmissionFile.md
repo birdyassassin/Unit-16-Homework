@@ -121,7 +121,7 @@ Your client has asked that you help identify any vulnerabilities with their file
 
 > Results are as follows.
 
-![Zenmap Quickscan](Images/HW16_14.jpg)
+![Zenmap scan](Images/HW16_14.jpg)
  
 - Bonus command to output results into a new text file named `zenmapscan.txt`:
 
@@ -132,15 +132,21 @@ Your client has asked that you help identify any vulnerabilities with their file
 
 ![Zenmap.txt](Images/HW16_16.jpg)
 
-- Zenmap vulnerability script command: 
+- Zenmap vulnerability script command:
+
+> The script used to identifiy the vulnerability with ports 139/445 is `smb-enum-shares` with the results as follows
+
+![Zenmap SMB](Images/HW16_17.jpg)
 
 - Once you have identified this vulnerability, answer the following questions for your client:
-  1. What is the vulnerability:
+  1. What is the vulnerability: 
+  > The vulnerability here is in the `Anonymous access` of some of the shares such as the IPC service share and `/tmp` share having READ/WRITE anonymous access.
+  > Also having the comment in `/tmp` as `oh noes!` is a bit on the nose.  
 
   2. Why is it dangerous:
+  > This is dangerous because it allows anonymous users to have access to sensitve information plus gives them the ability to change the information and even write in their own malicious scripts.
 
   3. What mitigation strategies can you recommendations for the client to protect their server:
+  > The easiest mitigation strategy would be to revoke anonymous access from the shares, update Samba and even restrict access to ports 139 and 445.
 
 ---
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.  
-
